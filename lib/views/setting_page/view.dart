@@ -181,7 +181,7 @@ Widget buildView(
               onChanged: (b) =>
                   dispatch(SettingPageActionCreator.adultCellTapped()),
               activeColor: Color(0xFF111111),
-              trackColor: Color(0xFFD0D0D0),
+              //trackColor: Color(0xFFD0D0D0),
               value: state.adultSwitchValue,
             ),
           ),

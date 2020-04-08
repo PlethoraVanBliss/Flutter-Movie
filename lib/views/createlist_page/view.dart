@@ -85,7 +85,7 @@ Widget buildView(
         backgroundColor: _theme.backgroundColor,
         title: Text(
           'CreatList',
-          style: _theme.textTheme.bodyText1,
+          style: _theme.textTheme.body1,
         ),
       ),
       body: _buildBody(),

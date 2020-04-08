@@ -247,7 +247,7 @@ class _ConditionList extends StatelessWidget {
                     goodsSortCondition.name,
                     style: TextStyle(
                       color: goodsSortCondition.isSelected
-                          ? _theme.textTheme.bodyText1.color
+                          ? _theme.textTheme.body1.color
                           : Colors.grey,
                     ),
                   ),

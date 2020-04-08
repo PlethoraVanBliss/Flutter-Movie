@@ -1,0 +1,3045 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Flutter Movies",
+    "version": "1.0",
+    "contact": {},
+    "description": "api for flutter movie"
+  },
+  "servers": [
+    {
+      "url": "https://www.fluttermovie.top/api",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/Movies": {
+      "get": {
+        "summary": "All Movies",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Movie"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "page": 2,
+                      "data": [
+                        {
+                          "id": 475557,
+                          "name": "Joker",
+                          "overwatch": "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.",
+                          "photourl": "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+                          "updateTime": "2019-10-02T00:00:00",
+                          "releaseDate": "2019-10-02T00:00:00",
+                          "popular": 509.648,
+                          "rate": 8.6,
+                          "ratedCount": 3770,
+                          "genre": "80,53,18"
+                        },
+                        {
+                          "id": 481084,
+                          "name": "The Addams Family",
+                          "overwatch": "The Addams family's lives begin to unravel when they face-off against a treacherous, greedy crafty reality-TV host while also preparing for their extended family to arrive for a major celebration.",
+                          "photourl": "/uaXNjRkDdjfxfVuKHo25wkA6CiA.jpg",
+                          "updateTime": "2019-10-10T00:00:00",
+                          "releaseDate": "2019-10-10T00:00:00",
+                          "popular": 509.648,
+                          "rate": 6.3,
+                          "ratedCount": 70,
+                          "genre": "16,35,10751,27,14"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "Get all the movie data",
+        "operationId": "getmovie",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "paging"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize",
+            "description": "size of the page"
+          }
+        ],
+        "tags": [
+          "Movies"
+        ]
+      },
+      "parameters": []
+    },
+    "/Movies/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Movie id"
+        }
+      ],
+      "get": {
+        "summary": "Get Movie",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Movie"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 475557,
+                      "name": "Joker",
+                      "overwatch": "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.",
+                      "photourl": "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+                      "updateTime": "2019-10-02T00:00:00",
+                      "releaseDate": "2019-10-02T00:00:00",
+                      "popular": 509.648,
+                      "rate": 8.6,
+                      "ratedCount": 3770,
+                      "genre": "80,53,18"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "MovieByid",
+        "description": "get movie by id",
+        "tags": [
+          "Movies"
+        ]
+      },
+      "put": {
+        "summary": "Update Movie",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "description": "put a movie",
+        "operationId": "Putmoviebyid",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Movie"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Movies"
+        ]
+      },
+      "delete": {
+        "summary": "Delete Movie",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Movie"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete Movie",
+        "operationId": "DeleteMovieById",
+        "tags": [
+          "Movies"
+        ]
+      }
+    },
+    "/Movies/Search": {
+      "get": {
+        "summary": "Search Movie",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Movie"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "page": 1,
+                      "data": [
+                        {
+                          "id": 481084,
+                          "name": "The Addams Family",
+                          "overwatch": "The Addams family's lives begin to unravel when they face-off against a treacherous, greedy crafty reality-TV host while also preparing for their extended family to arrive for a major celebration.",
+                          "photourl": "/uaXNjRkDdjfxfVuKHo25wkA6CiA.jpg",
+                          "updateTime": "2019-10-10T00:00:00",
+                          "releaseDate": "2019-10-10T00:00:00",
+                          "popular": 509.648,
+                          "rate": 6.3,
+                          "ratedCount": 70,
+                          "genre": "16,35,10751,27,14"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "name": "name"
+          }
+        ],
+        "operationId": "MovieSearch",
+        "description": "search movie by name",
+        "tags": [
+          "Movies"
+        ]
+      }
+    },
+    "/Movies/Create": {
+      "post": {
+        "summary": "Add Moive",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Movie"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Movie"
+              },
+              "examples": {
+                "example": {
+                  "value": {
+                    "id": 338967,
+                    "name": "Zombieland: Double Tap",
+                    "overwatch": "The group will face a new zombie threat as a new breed of zombie has developed. This new super-zombie type is faster, bigger, and stronger than the previous strain of zombies and harder to kill. These super-zombies have started grouping up into a horde going from city to city leaving a path of destruction behind them.",
+                    "photourl": "/pIcV8XXIIvJCbtPoxF9qHMKdRr2.jpg",
+                    "updateTime": "2019-10-02",
+                    "releaseDate": "2019-10-09",
+                    "popular": 106.597,
+                    "rate": 7.3,
+                    "ratedCount": 77,
+                    "genre": "27,28,35"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Movie model"
+        },
+        "operationId": "createmovie",
+        "description": "add a movie",
+        "tags": [
+          "Movies"
+        ]
+      },
+      "parameters": []
+    },
+    "/Languages": {
+      "get": {
+        "summary": "All Language",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Language"
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "code": "en",
+                        "name": "English"
+                      },
+                      {
+                        "id": 3,
+                        "code": "zh",
+                        "name": "Chinese"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "get all the language",
+        "operationId": "getAllTheLanguage",
+        "tags": [
+          "Language"
+        ]
+      },
+      "parameters": [],
+      "post": {
+        "summary": "Add Language",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Language"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "code"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {}
+            }
+          }
+        },
+        "description": "create a language",
+        "operationId": "createLanguage",
+        "tags": [
+          "Language"
+        ]
+      }
+    },
+    "/Languages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get Language",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Language"
+                }
+              }
+            }
+          }
+        },
+        "description": "get Language By ID",
+        "operationId": "getLanguageByID",
+        "tags": [
+          "Language"
+        ]
+      },
+      "put": {
+        "summary": "Update Language",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Language"
+              }
+            }
+          }
+        },
+        "description": "put a language",
+        "operationId": "putALanguage",
+        "tags": [
+          "Language"
+        ]
+      },
+      "delete": {
+        "summary": "Delete Language",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Language"
+                }
+              }
+            }
+          }
+        },
+        "description": "delete language by id",
+        "operationId": "deleteLanguage",
+        "tags": [
+          "Language"
+        ]
+      }
+    },
+    "/MediaQualityTypes": {
+      "get": {
+        "summary": "Get Quality Type",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaQualityType"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all quality type",
+        "operationId": "getallqualitytype",
+        "tags": [
+          "Media Quality Type"
+        ]
+      },
+      "post": {
+        "summary": "Create quality type",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaQualityType"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 1,
+                      "typeName": "720P",
+                      "typeCode": "HD"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Create quality type",
+        "operationId": "CreateQualityType",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Media Quality Type"
+        ]
+      }
+    },
+    "/MediaQualityTypes/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get Quality Type",
+        "tags": [
+          "Media Quality Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaQualityType"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 1,
+                      "typeName": "720P",
+                      "typeCode": "HD"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "get a quality type",
+        "operationId": "getAQualityType"
+      },
+      "delete": {
+        "summary": "Delete quality type",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "delete quality type",
+        "operationId": "deleteQualityType",
+        "tags": [
+          "Media Quality Type"
+        ]
+      },
+      "put": {
+        "summary": "Update quality type",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "bad request"
+          }
+        },
+        "description": "Put quality type",
+        "operationId": "putQualityType",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MediaQualityType"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Media Quality Type"
+        ]
+      }
+    },
+    "/StreamLinkTypes": {
+      "get": {
+        "summary": "Stream Link Types",
+        "tags": [
+          "Stream Link"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StreamLinkType"
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "typeName": "YouTube"
+                      },
+                      {
+                        "id": 2,
+                        "typeName": "WebView"
+                      },
+                      {
+                        "id": 3,
+                        "typeName": "other"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get stream link types",
+        "operationId": "getStreamLinkTypes"
+      },
+      "post": {
+        "summary": "Creata Stream Link Type",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamLinkType"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 1,
+                      "typeName": "YouTube"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Creata stream link type",
+        "operationId": "creataStreamLinkType",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/Users": {
+      "get": {
+        "summary": "Get User list",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get User list",
+        "operationId": "getUserLst",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Update or Create a user",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "description": "Create a user",
+        "operationId": "createAUser"
+      }
+    },
+    "/Users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get user by id",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "description": "get user by id",
+        "operationId": "getUserById"
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "uid": "string",
+                      "userName": "string",
+                      "photoUrl": "string",
+                      "email": "string",
+                      "phone": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "description": "Delete a user",
+        "operationId": "DeleteAUser"
+      },
+      "put": {
+        "summary": "Put a user",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Put a user ",
+        "operationId": "putAUser",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MovieStreamLinks": {
+      "get": {
+        "summary": "Movie Stream Links",
+        "tags": [
+          "Stream Link"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get movie stream link list",
+        "operationId": "movieStreamlists"
+      },
+      "post": {
+        "summary": "Create movie stream link",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieStreamLinkResponse"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "sid": 1,
+                      "uid": "GW18O0QIlyRFTAeZBAVNoC4fBGI3",
+                      "linkName": "720p",
+                      "streamLink": "https://vfx.mtime.cn/Video/2019/03/19/mp4/190319212559089721.mp4",
+                      "streamLinkType": 1,
+                      "quality": 1,
+                      "updateTime": "2019-10-10T00:00:00",
+                      "language": 1,
+                      "movieId": 475557
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovieStreamLinkRequest"
+              }
+            }
+          }
+        },
+        "description": "Get all movie stream links",
+        "operationId": "AllMovieStreamLinks",
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/MovieStreamLinks/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Movie Stream Link",
+        "tags": [
+          "Stream Link"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get stream link by id",
+        "operationId": "getStreamLnkById"
+      },
+      "put": {
+        "summary": "Update Movie Stream Link",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update stream link",
+        "operationId": "updateStreamLink",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovieStreamLinkRequest"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Stream Link"
+        ]
+      },
+      "delete": {
+        "summary": "Delete stream link",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "delete stream link",
+        "operationId": "DeleteStreamLink",
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/MovieStreamLinks/MovieId/{movieid}": {
+      "parameters": [
+        {
+          "name": "movieid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get Stream link by movie id",
+        "tags": [
+          "Stream Link"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovieStreamLinkResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get Stream link by movie id",
+        "operationId": "StreamLinkByMovieID"
+      }
+    },
+    "/UserLists": {
+      "get": {
+        "summary": "Get all user list",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserList"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all user list",
+        "operationId": "AllUserList",
+        "tags": [
+          "User"
+        ]
+      },
+      "post": {
+        "summary": "Create user list",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Create user list",
+        "operationId": "CreateUseList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserList"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User List"
+        ]
+      }
+    },
+    "/UserLists/User/{uid}": {
+      "parameters": [
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "get user list by uid"
+        }
+      ],
+      "get": {
+        "summary": "Get user lists by uid",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserList"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get user lists by uid",
+        "operationId": "UserListsByUid",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/UserLists/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get user list by id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserList"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get user list by id",
+        "operationId": "UserListById",
+        "tags": [
+          "User"
+        ]
+      },
+      "put": {
+        "summary": "Update user list by id",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "description": "Update user list by id",
+        "operationId": "UpdateUserListById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserList"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User List"
+        ]
+      },
+      "delete": {
+        "summary": "Delete user list by id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserList"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "description": "Delete user list by id",
+        "operationId": "DeleteUserListById",
+        "tags": [
+          "User List"
+        ]
+      }
+    },
+    "/UserListDetails": {
+      "post": {
+        "summary": "Create user list item",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDetail"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 1,
+                      "listid": 1,
+                      "mediaid": 475557,
+                      "mediaType": "Movie",
+                      "mediaName": "Joker",
+                      "photoUrl": "/ebe8hJRCwdflNQbUjRrfmqtUiNi.jpg"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserListDetail"
+              }
+            }
+          }
+        },
+        "description": "Create user list item",
+        "operationId": "CreateUserListItem",
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/UserListDetails/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get user list detail item by id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDetail"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get user list detail item by id",
+        "operationId": "UserListItemById",
+        "tags": [
+          "User"
+        ]
+      },
+      "put": {
+        "summary": "Update user list item",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Update user list item",
+        "operationId": "UpdateUserListItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserListDetail"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User List"
+        ]
+      },
+      "delete": {
+        "summary": "Delete user list item",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDetail"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete user list item",
+        "operationId": "DeleteUserListItem",
+        "tags": [
+          "User List"
+        ]
+      }
+    },
+    "/UserListDetails/List/{listid}": {
+      "parameters": [
+        {
+          "name": "listid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get user list item by list id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserListDetail"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ],
+        "description": "Get user list item by list id",
+        "operationId": "UserListItemByListId",
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/TvShows": {
+      "get": {
+        "summary": "All TvShows",
+        "tags": [
+          "TvShows"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TvShow"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all tvshows",
+        "operationId": "GetSllTvshows",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create a tvshows",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvShow"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TvShow"
+              }
+            }
+          }
+        },
+        "description": "Create a tvshows",
+        "operationId": "CreateTvShow",
+        "tags": [
+          "TvShows"
+        ]
+      }
+    },
+    "/TvShows/Search/{query}": {
+      "get": {
+        "summary": "Search TvShows",
+        "tags": [
+          "TvShows"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TvShow"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "page": 1,
+                      "data": [
+                        {
+                          "id": 60735,
+                          "name": "The Flash",
+                          "overwatch": "After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \"meta-human\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash.",
+                          "photourl": "/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg",
+                          "updateTime": "2019-11-05T00:00:00",
+                          "seasonCount": 6,
+                          "firstAirDate": "2014-10-07T00:00:00",
+                          "popular": 272.967,
+                          "rate": 6.7,
+                          "rateCount": 2921,
+                          "genre": "18,10765"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Search TvShows by name",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ],
+        "operationId": "TvshowsByName"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "query",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/TvShows/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get TvShow by id",
+        "tags": [
+          "TvShows"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvShow"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get TvShow by id",
+        "operationId": "GetTvShowById"
+      },
+      "put": {
+        "summary": "Update tvshow",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "description": "Update tvshow",
+        "operationId": "UpdateTvShow",
+        "tags": [
+          "TvShows"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TvShow"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Detele TvShow",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Detele TvShow",
+        "operationId": "DeteltTvShow",
+        "tags": [
+          "TvShows"
+        ]
+      }
+    },
+    "/TvShowStreamLinks": {
+      "get": {
+        "summary": "Get all Tvshow stream link",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "page": 1,
+                      "data": [
+                        {
+                          "sid": 1,
+                          "uid": "GW18O0QIlyRFTAeZBAVNoC4fBGI3",
+                          "linkName": "test",
+                          "streamLink": "test",
+                          "streamLinkType": 1,
+                          "quality": 1,
+                          "updateTime": "2019-11-01T00:00:00",
+                          "language": 1,
+                          "tvId": 60735,
+                          "season": 1,
+                          "episode": null,
+                          "languageNavigation": {
+                            "id": 1,
+                            "code": "en",
+                            "name": "English"
+                          },
+                          "qualityNavigation": {
+                            "id": 1,
+                            "typeName": "4K",
+                            "typeCode": "4k"
+                          },
+                          "streamLinkTypeNavigation": {
+                            "id": 1,
+                            "typeName": "YouTube"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all Tvshow stream link",
+        "operationId": "TvshowStreamLinks",
+        "tags": [
+          "Stream Link"
+        ]
+      },
+      "post": {
+        "summary": "Create tvshow stream link",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TvShowStreamLinkRequest"
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "Create tvshow stream link",
+        "operationId": "CreateTvShowStreamLink",
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/TvShowStreamLinks/TvId/{tvid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "tvid",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get tvshow stream links",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get tvshow stream links",
+        "operationId": "GetTvShowStreamLinks",
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/TvShowStreamLinks/{tvid}/{season}": {
+      "parameters": [
+        {
+          "name": "season",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "tvid",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get TvShow Season StreamLink",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                  }
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "description": "Get TvShow Season StreamLink",
+        "operationId": "GetSeasonStreamLink",
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/TvShowStreamLinks/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "exclusiveMinimum": true
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get tvshow stream link by id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get tvshow stream link by id",
+        "operationId": "GetTVStreamLinkById",
+        "parameters": [],
+        "tags": [
+          "Stream Link"
+        ]
+      },
+      "put": {
+        "summary": "Update tvshow stream link",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update tvshow stream link",
+        "operationId": "UpdateTvShowStreamLink",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TvShowStreamLinkRequest"
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "tags": [
+          "Stream Link"
+        ]
+      },
+      "delete": {
+        "summary": "Delete tv show stream link",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete tv show stream link",
+        "operationId": "DeleteTvShowStreamLink",
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/UserAccountStates": {
+      "get": {
+        "summary": "Get all user account state",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AccountState"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all user account state",
+        "operationId": "GetAllUserState",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      },
+      "post": {
+        "summary": "Create or Update account state",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountState"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "description": "Create account state",
+        "operationId": "CreateAccountState",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountState"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/UserAccountStates/{uid}/{mediatype}/{mediaid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "description": "user id"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "mediatype",
+          "in": "path",
+          "required": true,
+          "description": "movie or tvshow"
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "mediaid",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "get": {
+        "summary": "Get user account state by mediaid",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountState"
+                },
+                "examples": {
+                  "example-1": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "Get user account state by mediaid",
+        "operationId": "AccountStateByMediaid",
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/UserAccountStates/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "put": {
+        "summary": "Update account state",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountState"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update account state",
+        "operationId": "UpdateAccountState",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountState"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/UserFavorite": {
+      "post": {
+        "summary": "Create favorite",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Create favorite",
+        "operationId": "CreateFavorite",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "uid": {
+                    "type": "string"
+                  },
+                  "mediaId": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "photoUrl": {
+                    "type": "string"
+                  },
+                  "overwatch": {
+                    "type": "string"
+                  },
+                  "mediaType": {
+                    "type": "string",
+                    "description": "movie or tv"
+                  },
+                  "rated": {
+                    "type": "number"
+                  },
+                  "popular": {
+                    "type": "number"
+                  },
+                  "genre": {
+                    "type": "string"
+                  },
+                  "ratedCount": {
+                    "type": "string"
+                  },
+                  "updateTime": {
+                    "type": "string"
+                  },
+                  "createTime": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Favorite"
+        ]
+      },
+      "parameters": []
+    },
+    "/UserFavorite/{uid}": {
+      "parameters": [
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get User Favorite",
+        "tags": [
+          "Favorite"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserMovie"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "mediaType",
+            "description": "movie or tv",
+            "required": true
+          }
+        ],
+        "description": "Get User Favorite",
+        "operationId": "GetUserFavorite"
+      }
+    },
+    "/UserWatchlist/{uid}": {
+      "parameters": [
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get User Watchlist",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserMovie"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "pageSize"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "mediaType",
+            "description": "movie or tv",
+            "required": true
+          }
+        ],
+        "description": "Get User Watchlist",
+        "operationId": "GetUserWatchlist",
+        "tags": [
+          "watchlist"
+        ]
+      }
+    },
+    "/UserWatchlist": {
+      "post": {
+        "summary": "Create User Watchlist",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserMovie"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create User Watchlist",
+        "operationId": "CreateUserWatchlist",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "uid": {
+                    "type": "string"
+                  },
+                  "mediaId": {
+                    "type": "integer"
+                  }, "name": {
+                    "type": "string"
+                  },
+                  "photoUrl": {
+                    "type": "string"
+                  },
+                  "overwatch": {
+                    "type": "string"
+                  },
+                  "mediaType": {
+                    "type": "string",
+                    "description": "movie or tv"
+                  },
+                  "rated": {
+                    "type": "number"
+                  },
+                  "popular": {
+                    "type": "number"
+                  },
+                  "genre": {
+                    "type": "string"
+                  },
+                  "ratedCount": {
+                    "type": "string"
+                  },
+                  "updateTime": {
+                    "type": "string"
+                  },
+                  "createTime": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "watchlist"
+        ]
+      },
+      "parameters": []
+    },
+    "/TvShowSeasons/{tvid}": {
+      "parameters": [
+        {
+          "name": "tvid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get TvShow Seasons",
+        "tags": [
+          "TvShows"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get TvShow Seasons",
+        "operationId": "GetTvShowSeasons"
+      }
+    },
+    "/TvShowSeasons/List": {
+      "post": {
+        "summary": "Create Seasons",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Create Seasons",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": ""
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "operationId": "CreateSeasons",
+        "tags": [
+          "TvShows"
+        ]
+      }
+    },
+    "/TvShowStreamLinks/List": {
+      "post": {
+        "summary": "Add TvShow Links List",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvShowStreamLinkResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Add TvShow Links List",
+        "operationId": "AddTvShowLinksList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TvShowStreamLinkRequest"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Stream Link"
+        ]
+      }
+    },
+    "/UserFavorite/{uid}/{mediaId}": {
+      "parameters": [
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "mediaId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "delete": {
+        "summary": "Delete Favorite By User ID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Delete Favorite By User ID",
+        "operationId": "DeleteFavoriteByUserID",
+        "tags": [
+          "Favorite"
+        ]
+      }
+    },
+    "/UserWatchlist/{uid}/{mediaId}": {
+      "parameters": [
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "mediaId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "delete": {
+        "summary": "Delete Watchlist",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Delete Watchlist",
+        "operationId": "DeleteWatchlist",
+        "tags": [
+          "watchlist"
+        ]
+      }
+    },
+    "/UserListDetails/{list}/{type}/{mediaId}": {
+      "parameters": [
+        {
+          "name": "list",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          },
+          "description": "list id"
+        },
+        {
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "movie or tv"
+        },
+        {
+          "name": "mediaId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          },
+          "description": "media id"
+        }
+      ],
+      "get": {
+        "summary": "Get list item by media id",
+        "tags": [
+          "User List"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get list item by media id",
+        "operationId": "ListItemByMediaId"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {},
+    "schemas": {
+      "404": {
+        "title": "404",
+        "type": "object",
+        "properties": {
+          "traceId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "Movie": {
+        "title": "Movie",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "value": {
+              "id": 475557,
+              "name": "Joker",
+              "overwatch": "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.",
+              "photourl": "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+              "updateTime": "2019-10-02T00:00:00",
+              "releaseDate": "2019-10-02T00:00:00",
+              "popular": 509.648,
+              "rate": 8.6,
+              "ratedCount": 3770,
+              "genre": "80,53,18"
+            }
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "overwatch": {
+            "type": "string"
+          },
+          "photourl": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "releaseDate": {
+            "type": "string"
+          },
+          "popular": {
+            "type": "number"
+          },
+          "rate": {
+            "type": "number"
+          },
+          "ratedCount": {
+            "type": "integer"
+          },
+          "genre": {
+            "type": "string"
+          }
+        }
+      },
+      "Language": {
+        "title": "Language",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountState": {
+        "title": "AccountState",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "mediaType": {
+            "type": "string",
+            "description": "movie or tvshow"
+          },
+          "watchlist": {
+            "type": "integer"
+          },
+          "rated": {
+            "type": "number"
+          },
+          "favorite": {
+            "type": "integer"
+          },
+          "mediaId": {
+            "type": "integer"
+          },
+          "uid": {
+            "type": "string"
+          }
+        }
+      },
+      "MediaQualityType": {
+        "title": "MediaQualityType",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "MovieStreamLinkRequest": {
+        "title": "MovieStreamLinkRequest",
+        "type": "object",
+        "properties": {
+          "sid": {
+            "type": "integer"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "linkName": {
+            "type": "string"
+          },
+          "streamLink": {
+            "type": "string"
+          },
+          "streamLinkType": {
+            "type": "integer"
+          },
+          "quality": {
+            "type": "integer"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "language": {
+            "type": "integer"
+          },
+          "movieId": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sid"
+        ]
+      },
+      "StreamLinkType": {
+        "title": "StreamLinkType",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "MovieStreamLinkResponse": {
+        "title": "MovieStreamLinkResponse",
+        "type": "object",
+        "properties": {
+          "sid": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "linkName": {
+            "type": "string"
+          },
+          "streamLink": {
+            "type": "string"
+          },
+          "streamLinkType": {
+            "type": "integer"
+          },
+          "quality": {
+            "type": "integer"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "language": {
+            "type": "integer"
+          },
+          "movieId": {
+            "type": "integer"
+          },
+          "streamLinkTypeNavigation": {
+            "$ref": "#/components/schemas/StreamLinkType"
+          },
+          "qualityNavigation": {
+            "$ref": "#/components/schemas/MediaQualityType"
+          },
+          "languageNavigation": {
+            "$ref": "#/components/schemas/Language"
+          }
+        }
+      },
+      "TvShow": {
+        "title": "TvShow",
+        "type": "object",
+        "properties": {
+          "genre": {
+            "type": "string"
+          },
+          "ratecount": {
+            "type": "integer"
+          },
+          "rate": {
+            "type": "number"
+          },
+          "popular": {
+            "type": "number"
+          },
+          "firstAirDate": {
+            "type": "string"
+          },
+          "seasonCount": {
+            "type": "integer"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "photourl": {
+            "type": "string"
+          },
+          "overwatch": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "TvShowStreamLinkRequest": {
+        "title": "TvShowStreamLinkRequest",
+        "type": "object",
+        "properties": {
+          "sid": {
+            "type": "integer"
+          },
+          "episode": {
+            "type": "integer"
+          },
+          "season": {
+            "type": "integer"
+          },
+          "tvId": {
+            "type": "integer"
+          },
+          "language": {
+            "type": "integer"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "quality": {
+            "type": "integer"
+          },
+          "streamLinkType": {
+            "type": "integer"
+          },
+          "streamLink": {
+            "type": "string"
+          },
+          "linkName": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sid"
+        ]
+      },
+      "TvShowStreamLinkResponse": {
+        "title": "TvShowStreamLinkResponse",
+        "type": "object",
+        "properties": {
+          "episode": {
+            "type": "integer"
+          },
+          "season": {
+            "type": "integer"
+          },
+          "streamLinkTypeNavigation": {
+            "$ref": "#/components/schemas/StreamLinkType"
+          },
+          "qualityNavigation": {
+            "$ref": "#/components/schemas/MediaQualityType"
+          },
+          "languageNavigation": {
+            "$ref": "#/components/schemas/Language"
+          },
+          "tvId": {
+            "type": "integer"
+          },
+          "language": {
+            "type": "integer"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "quality": {
+            "type": "integer"
+          },
+          "streamLinkType": {
+            "type": "integer"
+          },
+          "streamLink": {
+            "type": "string"
+          },
+          "linkName": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "sid": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "photoUrl": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          }
+        }
+      },
+      "UserList": {
+        "title": "UserList",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "updateTime": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "runTime": {
+            "type": "integer"
+          },
+          "totalRated": {
+            "type": "number"
+          },
+          "selected": {
+            "type": "integer"
+          },
+          "revenue": {
+            "type": "number"
+          },
+          "itemCount": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "backGroundUrl": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "listName": {
+            "type": "string"
+          }
+        }
+      },
+      "UserListDetail": {
+        "title": "UserListDetail",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "photoUrl": {
+            "type": "string"
+          },
+          "mediaName": {
+            "type": "string"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "mediaid": {
+            "type": "integer"
+          },
+          "listid": {
+            "type": "integer"
+          },
+          "rated": {
+            "type": "number"
+          },
+          "runTime": {
+            "type": "number"
+          },
+          "revenue": {
+            "type": "number"
+          }
+        }
+      },
+      "UserMovie": {
+        "title": "UserMovie",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "media": {
+            "$ref": "#/components/schemas/Movie"
+          },
+          "mediaId": {
+            "type": "integer"
+          },
+          "uid": {
+            "type": "string"
+          }
+        }
+      },
+      "UserTvShow": {
+        "title": "UserTvShow",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "media": {
+            "$ref": "#/components/schemas/TvShow"
+          },
+          "mediaId": {
+            "type": "integer"
+          },
+          "uid": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

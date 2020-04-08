@@ -194,7 +194,7 @@ Widget buildView(
                           decoration: InputDecoration(
                               fillColor: Colors.transparent,
                               hintText: 'Account',
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              // floatingLabelBehavior: FloatingLabelBehavior.auto,
                               filled: true,
                               prefixStyle: TextStyle(
                                   color: Colors.black, fontSize: Adapt.px(35)),
@@ -226,8 +226,7 @@ Widget buildView(
                             decoration: InputDecoration(
                                 fillColor: Colors.transparent,
                                 hintText: 'PassWord',
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.auto,
+                                //floatingLabelBehavior: FloatingLabelBehavior.auto,
                                 filled: true,
                                 prefixStyle: TextStyle(
                                     color: Colors.black,

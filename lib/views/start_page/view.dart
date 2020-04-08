@@ -69,7 +69,7 @@ Widget buildView(
               return PageView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 controller: state.pageController,
-                allowImplicitScrolling: false,
+                // allowImplicitScrolling: false,
                 itemCount: pages.length,
                 itemBuilder: (context, index) {
                   return _buildPage(pages[index]);

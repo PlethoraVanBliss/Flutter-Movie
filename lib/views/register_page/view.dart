@@ -125,7 +125,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           fillColor: Colors.transparent,
                           hintText: 'Nickname',
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          //floatingLabelBehavior: FloatingLabelBehavior.always,
                           filled: true,
                           prefixStyle: TextStyle(
                               color: Colors.black, fontSize: Adapt.px(35)),
@@ -149,7 +149,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           fillColor: Colors.transparent,
                           hintText: 'Email',
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          //floatingLabelBehavior: FloatingLabelBehavior.auto,
                           filled: true,
                           prefixStyle: TextStyle(
                               color: Colors.black, fontSize: Adapt.px(35)),
@@ -174,7 +174,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           fillColor: Colors.transparent,
                           hintText: 'Password',
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          //floatingLabelBehavior: FloatingLabelBehavior.auto,
                           filled: true,
                           prefixStyle: TextStyle(
                               color: Colors.black, fontSize: Adapt.px(35)),

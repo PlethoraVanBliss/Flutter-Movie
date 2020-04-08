@@ -677,7 +677,7 @@ Widget buildView(
                 SliverOverlapAbsorber(
                   handle:
                       NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                  sliver: SliverAppBar(
+                  child: SliverAppBar(
                       pinned: true,
                       /*backgroundColor: state.palette.darkVibrantColor?.color ??
                           Colors.black87,*/
@@ -869,7 +869,7 @@ Widget buildView(
                                           maxLines: (constraints.maxHeight /
                                                   Theme.of(context)
                                                       .textTheme
-                                                      .bodyText1
+                                                      .body1
                                                       .fontSize)
                                               .floor(),
                                         );

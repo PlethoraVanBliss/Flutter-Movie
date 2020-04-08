@@ -25,7 +25,7 @@ Widget buildView(
                     SliverOverlapAbsorber(
                       handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
                           context),
-                      sliver: SliverAppBar(
+                      child: SliverAppBar(
                           pinned: true,
                           backgroundColor: dominantColor,
                           expandedHeight: Adapt.px(700),
